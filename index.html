@@ -98,7 +98,42 @@
       filter: blur(0); /* Remove blur when in view */
     }
 
-    /* Button styles */
+    .section h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .section p, .section ul {
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .section ul li {
+      margin: 10px 0;
+    }
+
+    /* Reviews Section */
+    .review {
+      text-align: left;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      color: #ffffff;
+      margin-top: 20px;
+    }
+
+    .review img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    /* Buy button */
     .buy-btn {
       display: inline-block;
       padding: 15px 30px;
@@ -138,6 +173,7 @@
     <nav class="navbar">
       <a href="#about">About</a>
       <a href="#features">Features</a>
+      <a href="#reviews">Reviews</a>
       <a href="#buy">Buy</a>
     </nav>
 
@@ -161,6 +197,17 @@
           <li>Regular updates to stay ahead of in-game trends.</li>
           <li>Support for all Gorilla Tag game modes.</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="section">
+      <div class="content">
+        <h2>User Reviews</h2>
+        <div class="review">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAAUACAYAAACqUjZeAAAAQElEQVR4nO3BMQEAAADCoPVPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGm4Cf0AAbC0F68AAAAASUVORK5CYII=" alt="Review Screenshot">
+          <p><strong>Csanád Wicha</strong><br>⭐⭐⭐⭐⭐<br>4 of 5 members found this review helpful.<br>"Fire menu, I love everything about it."</p>
+        </div>
       </div>
     </section>
 
