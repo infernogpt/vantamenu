@@ -86,7 +86,7 @@
       color: #000000;
     }
 
-    /* Section styles with blur effect */
+    /* Section styles */
     .section {
       padding: 200px 20px;
       width: 80%;
@@ -96,21 +96,61 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       margin-bottom: 200px;
-      filter: blur(20px); /* Initial blur */
-      opacity: 0.5; /* Initial faded appearance */
-      transform: scale(0.95); /* Slightly scaled down initially */
-      transition: all 0.5s ease; /* Smooth transitions for blur, opacity, and scale */
-    }
-
-    .section.visible {
-      filter: blur(0); /* Remove blur when in view */
-      opacity: 1; /* Fully visible */
-      transform: scale(1); /* Restore original scale */
     }
 
     .section h2 {
       font-size: 3rem;
       margin-bottom: 20px;
+    }
+
+    /* Carousel styles */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: auto;
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1); /* Heavy easing for smooth transitions */
+    }
+
+    .carousel-item {
+      min-width: 100%;
+      text-align: left;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .carousel-item p {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .carousel-indicators button {
+      width: 10px;
+      height: 10px;
+      background: #ffffff;
+      border: none;
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+      opacity: 0.5;
+    }
+
+    .carousel-indicators button.active {
+      opacity: 1;
     }
 
     /* Buy button */
@@ -185,7 +225,32 @@
     <section id="reviews" class="section">
       <div class="content">
         <h2>User Reviews</h2>
-        <p>Reviews carousel will go here...</p>
+        <div class="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item">
+              <p><strong>Alan S.</strong><br>⭐⭐⭐⭐⭐<br>"The best mod menu out there! Highly recommended."</p>
+            </div>
+            <div class="carousel-item">
+              <p><strong>Maria T.</strong><br>⭐⭐⭐⭐⭐<br>"Works flawlessly. Great features!"</p>
+            </div>
+            <div class="carousel-item">
+              <p><strong>John D.</strong><br>⭐⭐⭐⭐⭐<br>"Amazing! Can't imagine playing without it."</p>
+            </div>
+            <div class="carousel-item">
+              <p><strong>Emily R.</strong><br>⭐⭐⭐⭐⭐<br>"Super easy to install and use. Love it!"</p>
+            </div>
+            <div class="carousel-item">
+              <p><strong>Chris P.</strong><br>⭐⭐⭐⭐⭐<br>"Absolutely worth it!"</p>
+            </div>
+          </div>
+          <div class="carousel-indicators">
+            <button class="active"></button>
+            <button></button>
+            <button></button>
+            <button></button>
+            <button></button>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -206,22 +271,32 @@
   </div>
 
   <script>
-    // JavaScript for dynamic blur visibility
-    const sections = document.querySelectorAll('.section');
+    // JavaScript for the carousel functionality
+    const carouselInner = document.querySelector('.carousel-inner');
+    const indicators = document.querySelectorAll('.carousel-indicators button');
+    let currentIndex = 0;
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible'); // Remove blur when in view
-        } else {
-          entry.target.classList.remove('visible'); // Add blur when out of view
-        }
+    function showNextReview() {
+      currentIndex = (currentIndex + 1) % indicators.length;
+      updateCarousel();
+    }
+
+    function updateCarousel() {
+      const offset = -currentIndex * 100;
+      carouselInner.style.transform = `translateX(${offset}%)`;
+      indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
       });
     });
 
-    sections.forEach(section => {
-      observer.observe(section);
-    });
+    setInterval(showNextReview, 5000); // Rotate every 5 seconds
   </script>
 </body>
 </html>
