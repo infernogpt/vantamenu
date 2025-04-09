@@ -30,11 +30,21 @@
 
     /* Header styles */
     .header {
+      position: relative;
       padding: 150px 20px;
       background: rgba(0, 0, 0, 0.7);
       width: 100%;
       color: #ffffff;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .header img {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      max-width: 300px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
     }
 
     .title {
@@ -93,56 +103,6 @@
       margin-bottom: 20px;
     }
 
-    /* Carousel styles */
-    .carousel {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-      height: auto;
-    }
-
-    .carousel-inner {
-      display: flex;
-      transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1); /* Heavy easing */
-    }
-
-    .carousel-item {
-      min-width: 100%;
-      text-align: left;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.8);
-      border-radius: 10px;
-      color: #ffffff;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .carousel-item p {
-      margin: 0;
-      font-size: 1.2rem;
-    }
-
-    .carousel-indicators {
-      display: flex;
-      justify-content: center;
-      margin-top: 10px;
-    }
-
-    .carousel-indicators button {
-      width: 10px;
-      height: 10px;
-      background: #ffffff;
-      border: none;
-      border-radius: 50%;
-      margin: 0 5px;
-      cursor: pointer;
-      transition: opacity 0.3s ease;
-      opacity: 0.5;
-    }
-
-    .carousel-indicators button.active {
-      opacity: 1;
-    }
-
     /* Buy button */
     .buy-btn {
       display: inline-block;
@@ -177,6 +137,7 @@
     <header class="header">
       <h1 class="title">Vanta Mod Menu</h1>
       <p class="subtitle">Loved by over 50 buyers!</p>
+      <img src="banner-image.png" alt="Vanta Paid Menu">
     </header>
 
     <!-- Navbar -->
@@ -214,32 +175,7 @@
     <section id="reviews" class="section">
       <div class="content">
         <h2>User Reviews</h2>
-        <div class="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item">
-              <p><strong>Csanád Wicha</strong><br>⭐⭐⭐⭐⭐<br>"Fire menu, I love everything about it."</p>
-            </div>
-            <div class="carousel-item">
-              <p><strong>Emily R.</strong><br>⭐⭐⭐⭐⭐<br>"This is hands-down the best mod menu I've ever used!"</p>
-            </div>
-            <div class="carousel-item">
-              <p><strong>Alexander T.</strong><br>⭐⭐⭐⭐⭐<br>"Seamless, reliable, and worth every penny."</p>
-            </div>
-            <div class="carousel-item">
-              <p><strong>Natalie P.</strong><br>⭐⭐⭐⭐⭐<br>"Super easy to install and works like a charm."</p>
-            </div>
-            <div class="carousel-item">
-              <p><strong>Jason L.</strong><br>⭐⭐⭐⭐⭐<br>"Highly recommend this to anyone who loves Gorilla Tag."</p>
-            </div>
-          </div>
-          <div class="carousel-indicators">
-            <button class="active"></button>
-            <button></button>
-            <button></button>
-            <button></button>
-            <button></button>
-          </div>
-        </div>
+        <p>Reviews carousel will go here...</p>
       </div>
     </section>
 
@@ -258,34 +194,5 @@
       <p>© 2025 Vanta Mod Menu. All rights reserved.</p>
     </footer>
   </div>
-
-  <script>
-    // JavaScript for the carousel functionality
-    const carouselInner = document.querySelector('.carousel-inner');
-    const indicators = document.querySelectorAll('.carousel-indicators button');
-    let currentIndex = 0;
-
-    function showNextReview() {
-      currentIndex = (currentIndex + 1) % indicators.length;
-      updateCarousel();
-    }
-
-    function updateCarousel() {
-      const offset = -currentIndex * 100;
-      carouselInner.style.transform = `translateX(${offset}%)`;
-      indicators.forEach((indicator, index) => {
-        indicator.classList.toggle('active', index === currentIndex);
-      });
-    }
-
-    indicators.forEach((indicator, index) => {
-      indicator.addEventListener('click', () => {
-        currentIndex = index;
-        updateCarousel();
-      });
-    });
-
-    setInterval(showNextReview, 5000); // Rotate every 5 seconds
-  </script>
 </body>
 </html>
