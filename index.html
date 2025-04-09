@@ -86,16 +86,18 @@
       color: #000000;
     }
 
-    /* Section styles */
+    /* Section styles with persistent blur */
     .section {
-      padding: 200px 20px;
+      padding: 200px 20px; /* Extra generous spacing between sections */
       width: 80%;
       max-width: 800px;
       margin: 0 auto;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-      margin-bottom: 200px;
+      margin-bottom: 200px; /* Extra space between sections */
+      filter: blur(20px); /* Persistent heavy blur effect */
+      transition: all 0.8s ease; /* Smooth fade-in transition */
     }
 
     .section h2 {
@@ -231,16 +233,16 @@
               <p><strong>Csanád Wicha</strong><br>⭐⭐⭐⭐⭐<br>"Fire menu, I love everything about it."</p>
             </div>
             <div class="carousel-item">
-              <p><strong>sudzythegoat</strong><br>⭐⭐⭐⭐⭐<br>"This is hands-down the best mod menu I've ever used!"</p>
+              <p><strong>sudzythegoat.</strong><br>⭐⭐⭐⭐⭐<br>"This is hands-down the best mod menu I've ever used!"</p>
             </div>
             <div class="carousel-item">
-              <p><strong>toiletvr.</strong><br>⭐⭐⭐⭐⭐<br>"Seamless, reliable, and worth every penny."</p>
+              <p><strong>ShibaGT.</strong><br>⭐⭐⭐⭐⭐<br>"Menu looks cool, and is op"</p>
             </div>
             <div class="carousel-item">
-              <p><strong>skibidislicers.</strong><br>⭐⭐⭐⭐⭐<br>"Super easy to install and works like a charm."</p>
+              <p><strong>kingvr123.</strong><br>⭐⭐⭐⭐⭐<br>"Super easy to install and works like a charm."</p>
             </div>
             <div class="carousel-item">
-              <p><strong>LEBRON.</strong><br>⭐⭐⭐⭐⭐<br>"Highly recommend this to anyone who loves Gorilla Tag."</p>
+              <p><strong>Lebronvr5.</strong><br>⭐⭐⭐⭐⭐<br>"Highly recommend this to anyone who loves Gorilla Tag."</p>
             </div>
           </div>
           <div class="carousel-indicators">
@@ -269,34 +271,5 @@
       <p>© 2025 Vanta Mod Menu. All rights reserved.</p>
     </footer>
   </div>
-
-  <script>
-    // JavaScript for the carousel functionality
-    const carouselInner = document.querySelector('.carousel-inner');
-    const indicators = document.querySelectorAll('.carousel-indicators button');
-    let currentIndex = 0;
-
-    function showNextReview() {
-      currentIndex = (currentIndex + 1) % indicators.length;
-      updateCarousel();
-    }
-
-    function updateCarousel() {
-      const offset = -currentIndex * 100;
-      carouselInner.style.transform = `translateX(${offset}%)`;
-      indicators.forEach((indicator, index) => {
-        indicator.classList.toggle('active', index === currentIndex);
-      });
-    }
-
-    indicators.forEach((indicator, index) => {
-      indicator.addEventListener('click', () => {
-        currentIndex = index;
-        updateCarousel();
-      });
-    });
-
-    setInterval(showNextReview, 5000); // Rotate every 5 seconds
-  </script>
 </body>
 </html>
