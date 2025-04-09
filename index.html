@@ -86,7 +86,7 @@
       color: #000000;
     }
 
-    /* Section styles with persistent blur */
+    /* Section styles with dynamic blur */
     .section {
       padding: 200px 20px; /* Extra generous spacing between sections */
       width: 80%;
@@ -96,8 +96,11 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       margin-bottom: 200px; /* Extra space between sections */
-      filter: blur(20px); /* Persistent heavy blur effect */
-      transition: all 0.8s ease; /* Smooth fade-in transition */
+      transition: filter 0.5s ease, transform 0.5s ease;
+    }
+
+    .section.blur {
+      filter: blur(20px); /* Apply blur when scrolled */
     }
 
     .section h2 {
@@ -233,16 +236,16 @@
               <p><strong>Csanád Wicha</strong><br>⭐⭐⭐⭐⭐<br>"Fire menu, I love everything about it."</p>
             </div>
             <div class="carousel-item">
-              <p><strong>sudzythegoat.</strong><br>⭐⭐⭐⭐⭐<br>"This is hands-down the best mod menu I've ever used!"</p>
+              <p><strong>Emily R.</strong><br>⭐⭐⭐⭐⭐<br>"This is hands-down the best mod menu I've ever used!"</p>
             </div>
             <div class="carousel-item">
-              <p><strong>ShibaGT.</strong><br>⭐⭐⭐⭐⭐<br>"Menu looks cool, and is op"</p>
+              <p><strong>Alexander T.</strong><br>⭐⭐⭐⭐⭐<br>"Seamless, reliable, and worth every penny."</p>
             </div>
             <div class="carousel-item">
-              <p><strong>kingvr123.</strong><br>⭐⭐⭐⭐⭐<br>"Super easy to install and works like a charm."</p>
+              <p><strong>Natalie P.</strong><br>⭐⭐⭐⭐⭐<br>"Super easy to install and works like a charm."</p>
             </div>
             <div class="carousel-item">
-              <p><strong>Lebronvr5.</strong><br>⭐⭐⭐⭐⭐<br>"Highly recommend this to anyone who loves Gorilla Tag."</p>
+              <p><strong>Jason L.</strong><br>⭐⭐⭐⭐⭐<br>"Highly recommend this to anyone who loves Gorilla Tag."</p>
             </div>
           </div>
           <div class="carousel-indicators">
@@ -271,5 +274,20 @@
       <p>© 2025 Vanta Mod Menu. All rights reserved.</p>
     </footer>
   </div>
+
+  <script>
+    // JavaScript for dynamic blur on scroll
+    const sections = document.querySelectorAll('.section');
+
+    window.addEventListener('scroll', () => {
+      sections.forEach((section) => {
+        section.classList.add('blur');
+        clearTimeout(section.blurTimeout); // Clear any existing timeout
+        section.blurTimeout = setTimeout(() => {
+          section.classList.remove('blur');
+        }, 300); // Remove blur after 300ms when scrolling stops
+      });
+    });
+  </script>
 </body>
 </html>
